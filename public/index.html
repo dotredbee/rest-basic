@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <title>Expresss basic-rest</title>
+</head>
+<body>
+    <div class="container">
+        <div id="login" class="input-form">
+            <span id="login-title" class="title">
+                <h3>Login</h3>
+            </span> &nbsp;
+            <form action="/sign/login" method="post">
+                <input type="text" class="input-field" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" class="input-field" name="password"/>
+                <input type="submit" class="btn" value="submit"/>
+            </form>
+        </div>
+        <div id="post" class="input-form">
+            <span id="post-title" class="title">
+                <h4>Post</h4>
+            </span> &nbsp;
+            <form action="/api/post/create" method="get">
+                <input type="text" class="input-field" placeholder="subject" name="subject"/>
+                <input type="text" class="input-field" placeholder="author" name="author"/>
+                <textarea name="content" class="area-field" cols="30" rows="10"></textarea>
+                <input type="submit" class="btn" value="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
