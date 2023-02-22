@@ -38,3 +38,4 @@ postSchema.statics.deleteByPostId = function(postId) {
     return this.remove({ postId })
 }
 module.exports = mongoose.model("Post", postSchema)
+
