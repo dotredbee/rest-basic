@@ -1,0 +1,43 @@
+<%-include('header.ejs')%>
+<body>
+    <div class="container">
+        <% if(post) { %>
+            <div class="post-form">
+                <div class="post-title-cover">
+                    <div class="field-form">
+                        <span>제목 : </span>
+                        <span><%=post.subject%></span>
+                    </div>
+                    <div class = "field-form">
+                        <span>작성자 : </span>
+                        <span><%=post.author%></span>
+                    </div>
+                </div>
+                <div class="content">
+                    <%=post.content%>
+                </div>
+                <button id="back" class="btn btn-primary">back</button>
+                <a href="/api/post/update/<%=post.postId%>" id="update" class="btn btn-normal">update</a>
+                <button id="delete" class="btn btn-warning">delete</button>                
+            </div>
+        <% } %>
+    </div>
+    <script>
+        $(document).ready(() => {
+            const id = <%=post.postId%>
+    
+            $('#delete').click(() => {
+                $.ajax({
+                    url : `/api/post/${id}`,
+                    method : "DELETE",
+                })
+                .done(() => {
+                    alert("delete!!");
+                    window.location = "/"
+                })
+                .fail((xhr, status, err) => console.log(status))
+            })
+        })
+    </script>
+</body>
+<%-include('footer.ejs')%>

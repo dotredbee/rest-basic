@@ -1,0 +1,69 @@
+<%-include('header.ejs')%>
+<body>
+    <div class="container">
+        <div id="login" class="input-form">
+            <span id="login-title" class="title">
+                <h3>Login</h3>
+            </span> &nbsp;
+            <form action="/sign/login" method="post">
+                <input type="text" class="input-field" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" class="input-field" name="password"/>
+                <input type="submit" class="btn btn-normal" value="submit"/>
+            </form>
+        </div>
+        <div id="post" class="input-form">
+            <span id="post-title" class="title">
+                <h4>Post</h4>
+            </span> &nbsp;
+            <form action="/api/post/create" method="post">
+                <input type="text" class="input-field" placeholder="subject" name="subject"/>
+                <input type="text" class="input-field" placeholder="author" name="author"/>
+                <textarea name="content" class="area-field" cols="30" rows="10"></textarea>
+                <input type="submit" class="btn btn-normal" value="submit">
+            </form>
+        </div>
+
+        <div id="posts" class="base-table">
+            <table>
+                <thead>
+                    <tr>
+                        <td>번호</td>
+                        <td>제목</td>
+                        <td>작성자</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <script>
+            $(document).ready(() => {
+                const printPostsTable = (posts) => {
+                    console.log(typeof posts)
+                    posts.forEach(post => {
+                        $('#posts tbody').append(`
+                            <tr>
+                                <td>${post.postId}</td>
+                                <td><a href="/api/post/${post.postId}">${post.author}</a></td>
+                                <td>${post.subject}</td>
+                            </tr>
+                        `)
+                    });                    
+                }
+                $.ajax({
+                    url : '/api/post/list',
+                    method : 'GET',
+                    dataType : 'json'
+                })
+                .done((json) => { 
+                    printPostsTable(json)
+                })
+                .fail((xhr, status, err) => { 
+                    console.log(err)
+                })
+            })
+        </script>
+    </div>
+</body>
+<%-include('footer.ejs')%>

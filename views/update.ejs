@@ -1,0 +1,18 @@
+<%-include('header.ejs')%>
+<body>
+    <% if(post) { %>
+    <div id="post" class="input-form">
+        <span id="post-title" class="title">
+            <h4>Post</h4>
+        </span> &nbsp;
+        <form action="/api/post/update" method="post">
+            <input type="hidden" name="postId" value="<%=post.postId%>">
+            <input type="text" class="input-field" placeholder="subject" name="subject" value="<%=post.subject%>"/>
+            <input type="text" class="input-field" placeholder="author" name="author" value="<%=post.author%>"/>
+            <textarea name="content" class="area-field" cols="30" rows="10"><%=post.content%></textarea>
+            <input type="submit" class="btn btn-normal" value="update">
+        </form>
+    </div>
+    <% } %>
+</body>
+<%-include('footer.ejs')%>

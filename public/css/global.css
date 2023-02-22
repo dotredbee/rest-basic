@@ -48,7 +48,9 @@ table {
     height: 100vh;
 }
 
-.input-form { 
+.input-form,
+.base-table,
+.post-form{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,4 +75,35 @@ table {
     border-radius: 8px;
     border : 1px solid lightgray;
     transition : all .3s;
+}
+
+table, th, td {
+    border : 1px solid #bcbcbc;
+}
+table{
+    width : 600px;
+    height : 120px;
+}
+.content { 
+    margin-top : 12px;
+    margin-bottom : 12px;
+}
+.btn { 
+    background-color : white; 
+    border : 0; 
+    color : white; 
+    font-weight: 400;
+    border-radius: 8px;
+    padding : 4px 12px;
+    cursor : pointer;
+    margin : 4px 8px;
+}
+.btn-primary { 
+    background-color : blue;
+}
+.btn-normal {
+    background-color : green;
+}
+.btn-warning { 
+    background-color : red;
 }
