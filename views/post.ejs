@@ -21,9 +21,9 @@
                         <p class="fs-5 mb-4"><%=post.content%></p>
                     </section>
                     <div class="mb-4">
-                        <button id="back" class="btn btn-primary">back</button>
-                        <a href="/api/post/update/<%=post.postId%>" id="update" class="btn btn-warning">update</a>
-                        <button id="delete" class="btn btn-danger">delete</button>   
+                        <a href="/" id="back" class="btn btn-primary">Back</a>
+                        <a href="/api/post/update/<%=post.postId%>" id="update" class="btn btn-warning">Update</a>
+                        <button id="delete" class="btn btn-danger">Delete</button>   
                     </div>
                 <% } %>
             </article>
@@ -129,5 +129,4 @@
         })
     })
 </script>
-</body>
 <%-include('footer.ejs')%>

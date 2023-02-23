@@ -27,10 +27,11 @@ mongoose
 
 const postRouter = require('./routes/api/postRouter')
 const signRouter = require('./routes/sign/router')
+const defaultRouter = require('./routes/router')
 
 app.use('/api/post', postRouter);
 app.use('/sign', signRouter)
-
+app.use('/', defaultRouter)
 
 app.use("/", (req, res, next) => { 
     res.status(200).render('index')

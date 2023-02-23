@@ -1,0 +1,24 @@
+<%-include('header.ejs')%>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <form class="row g-3" action="/api/post/create" method="post">
+            <div class="col-md-8">
+              <label for="inputSubject" class="form-label">Subject</label>
+              <input type="text" class="form-control" name="subject" required>
+            </div>
+            <div class="col-md-4 mb-5">
+              <label for="inputAuthor" class="form-label">Author</label>
+              <input type="text" class="form-control" name="author" required>
+            </div>
+            <div class="col-12 mb-5">
+                <label for="inputContent" class="form-label">Content</label>
+                <textarea class="form-control col-sm-5" rows="12" name="content" required></textarea>
+            </div>
+            <div class="col-12">
+              <a href="/" class="btn btn-primary">Back</a>
+              <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+          </form>
+    </div>
+</div>
+<%-include('footer.ejs')%>

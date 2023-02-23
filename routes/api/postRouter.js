@@ -2,6 +2,8 @@ const express = require('express')
 
 const router = express.Router();
 const Post = require('../../models/post.model');
+
+
 router.post("/create", (req, res, next) =>{ 
     Post.create(req.body)
         .then(post => res.status(200).render('index'))

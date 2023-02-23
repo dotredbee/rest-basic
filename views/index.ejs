@@ -1,106 +1,105 @@
 <%-include('header.ejs')%>
-    <div class="container">
-        <div class="row">
-            <div id="main-posts-view" class="col-lg-8">
-                
+<div class="container">
+    <div class="row">
+        <div id="main-posts-view" class="col-lg-8">
+            
+        </div>
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-header">Search</div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <div class="card-header">Categories</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">Web Design</a></li>
+                                <li><a href="#!">HTML</a></li>
+                                <li><a href="#!">Freebies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">JavaScript</a></li>
+                                <li><a href="#!">CSS</a></li>
+                                <li><a href="#!">Tutorials</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <!-- Categories widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Categories</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">Web Design</a></li>
-                                    <li><a href="#!">HTML</a></li>
-                                    <li><a href="#!">Freebies</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">JavaScript</a></li>
-                                    <li><a href="#!">CSS</a></li>
-                                    <li><a href="#!">Tutorials</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Side widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Side Widget</div>
-                    <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-                </div>
+            </div>
+            <!-- Side widget-->
+            <div class="card mb-4">
+                <div class="card-header">Side Widget</div>
+                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
             </div>
         </div>
     </div>
-    
-    <script>
-        $(document).ready(() => {
-            const printPostsTable = (posts) => {
-                var idx = 0;
-                var query = `<div class="col-lg-6">` 
-                posts.forEach(post => {
-                    if(idx == 0) {
-                        $('#main-posts-view').append(
-                            `
-                            <div class="card mb-4">
-                                <a href="/api/post/${post.postId}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title">${post.subject}</h2>
-                                    <p class="card-text">${post.content}</p>
-                                    <a class="btn btn-primary" href="/api/post/${post.postId}">Read more →</a>
-                                </div>
-                            </div>
-                            <div id="sub-posts" class="row">
-                            </div>
-                            `
-                        )
-                        
-                    }else{
-                        query +=`
-                            <div class="card mb-4">
-                                <a href="/api/post/${post.postId}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title">${post.subject}</h2>
-                                    <p class="card-text">${post.content}</p>
-                                    <a class="btn btn-primary" href="/api/post/${post.postId}">Read more →</a>
-                                </div>
-                            </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        const printPostsTable = (posts) => {
+            var idx = 0;
+            var query = `<div class="col-lg-6">` 
+            posts.forEach(post => {
+                if(idx == 0) {
+                    $('#main-posts-view').append(
                         `
-                        if(idx % 2 == 0) {
-                            query += '</div>';
-                            $('#sub-posts').append(query)
-                            query = `<div class="col-lg-6">`;   
-                        }
+                        <div class="card mb-4">
+                            <a href="/api/post/${post.postId}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted">January 1, 2022</div>
+                                <h2 class="card-title">${post.subject}</h2>
+                                <p class="card-text">${post.content}</p>
+                                <a class="btn btn-primary" href="/api/post/${post.postId}">Read more →</a>
+                            </div>
+                        </div>
+                        <div id="sub-posts" class="row">
+                        </div>
+                        `
+                    )
+                    
+                }else{
+                    query +=`
+                        <div class="card mb-4">
+                            <a href="/api/post/${post.postId}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted">January 1, 2022</div>
+                                <h2 class="card-title">${post.subject}</h2>
+                                <p class="card-text">${post.content}</p>
+                                <a class="btn btn-primary" href="/api/post/${post.postId}">Read more →</a>
+                            </div>
+                        </div>
+                    `
+                    if(idx % 2 == 0) {
+                        query += '</div>';
+                        $('#sub-posts').append(query)
+                        query = `<div class="col-lg-6">`;   
                     }
-                    idx++
-                });                    
-            }
-            $.ajax({
-                url : '/api/post/list',
-                method : 'GET',
-                dataType : 'json'
-            })
-            .done((json) => { 
-                printPostsTable(json)
-            })
-            .fail((xhr, status, err) => { 
-                console.log(err)
-            })
+                }
+                idx++
+            });                    
+        }
+        $.ajax({
+            url : '/api/post/list',
+            method : 'GET',
+            dataType : 'json'
         })
-    </script>
-</body>
+        .done((json) => { 
+            printPostsTable(json)
+        })
+        .fail((xhr, status, err) => { 
+            console.log(err)
+        })
+    })
+</script>
 <%-include('footer.ejs')%>

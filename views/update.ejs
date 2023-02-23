@@ -1,18 +1,27 @@
 <%-include('header.ejs')%>
-<body>
-    <% if(post) { %>
-    <div id="post" class="input-form">
-        <span id="post-title" class="title">
-            <h4>Post</h4>
-        </span> &nbsp;
-        <form action="/api/post/update" method="post">
-            <input type="hidden" name="postId" value="<%=post.postId%>">
-            <input type="text" class="input-field" placeholder="subject" name="subject" value="<%=post.subject%>"/>
-            <input type="text" class="input-field" placeholder="author" name="author" value="<%=post.author%>"/>
-            <textarea name="content" class="area-field" cols="30" rows="10"><%=post.content%></textarea>
-            <input type="submit" class="btn btn-normal" value="update">
-        </form>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <% if(post) { %>
+            <form class="row g-3" action="/api/post/update" method="post">
+                <input type="hidden" name="postId" value="<%=post.postId%>">
+                <div class="col-md-8">
+                <label for="inputSubject" class="form-label">Subject</label>
+                <input type="text" class="form-control" name="subject" value="<%=post.subject%>" required>
+                </div>
+                <div class="col-md-4 mb-5">
+                <label for="inputAuthor" class="form-label">Author</label>
+                <input type="text" class="form-control" name="author" value="<%=post.author%>" required>
+                </div>
+                <div class="col-12 mb-5">
+                    <label for="inputContent" class="form-label">Content</label>
+                    <textarea class="form-control col-sm-5" rows="12" name="content" required>><%=post.content%></textarea>
+                </div>
+                <div class="col-12">
+                <a href="/api/post/<%=post.postId%>" class="btn btn-primary">Back</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+          <% } %>
     </div>
-    <% } %>
-</body>
+</div>
 <%-include('footer.ejs')%>
